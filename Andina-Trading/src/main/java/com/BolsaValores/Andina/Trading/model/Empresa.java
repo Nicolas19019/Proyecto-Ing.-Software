@@ -18,6 +18,9 @@ public class Empresa {
 	
 	@Column(name = "TotalAcciones")
 	private int TotalAcciones;
+	
+	@Column(name = "sector")
+	private String sector;
 
 	/**
 	 * @return the idEmpresa
@@ -61,6 +64,12 @@ public class Empresa {
 		TotalAcciones = totalAcciones;
 	}
 	
+	public String getSector() {
+		return sector;
+	}
+	public void setSector(String sector) {
+		this.sector = sector;
+	}
 	
 	
 
