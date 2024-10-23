@@ -26,6 +26,9 @@ public class Asesoria {
 	
 	@Column(name = "Fecha")
 	private Date fecha;
+	
+	@Column(name = "Hora")
+	private String hora;
 
 	/**
 	 * @return the idAsesoria
