@@ -13,9 +13,8 @@ public class Inversionista {
 	@Column(name = "Idinver")
 	private int idinversionista;
 	
-	
 	@Column(name = "Cedula")
-	private String cedula;
+	private int cedula;
 	
 	@Column(name = "Nombre")
 	private String nombre;
@@ -29,6 +28,15 @@ public class Inversionista {
 	@Column(name = "Monto")
 	private int monto;
 
+	@Column(name = "Contraseña")
+	private String contrasena;
+	
+	@Column(name = "Usuario")
+	private String usuario;
+	
+	@Column(name = "pais")
+	private String pais;
+	
 	/**
 	 * @return the idinversionista
 	 */
@@ -43,17 +51,18 @@ public class Inversionista {
 		this.idinversionista = idinversionista;
 	}
 
+
 	/**
 	 * @return the cedula
 	 */
-	public String getCedula() {
+	public int getCedula() {
 		return cedula;
 	}
 
 	/**
 	 * @param cedula the cedula to set
 	 */
-	public void setCedula(String cedula) {
+	public void setCedula(int cedula) {
 		this.cedula = cedula;
 	}
 
@@ -113,6 +122,48 @@ public class Inversionista {
 		this.monto = monto;
 	}
 
+	/**
+	 * @return the contrasena
+	 */
+	public String getContrasena() {
+		return contrasena;
+	}
+
+	/**
+	 * @param contrasena the contrasena to set
+	 */
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
+	}
+
+	/**
+	 * @return the user
+	 */
+	public String getUsuario() {
+		return usuario;
+	}
+
+	/**
+	 * @param user the user to set
+	 */
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	/**
+	 * @return the pais
+	 */
+	public String getPais() {
+		return pais;
+	}
+
+	/**
+	 * @param pais the pais to set
+	 */
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
 
 
+	
 }

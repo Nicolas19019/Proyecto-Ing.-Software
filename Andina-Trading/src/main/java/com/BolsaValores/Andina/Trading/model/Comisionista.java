@@ -24,7 +24,16 @@ public class Comisionista {
 	
 	@Column(name = "comision")
 	private int comision;
+	
+	@Column(name = "Contraseña")
+	private String contra;
 
+	@Column(name = "Usuario")
+	private String user;
+	
+	@Column(name = "pais")
+	private String pais;
+	
 	/**
 	 * @return the idcomisionista
 	 */
@@ -93,6 +102,48 @@ public class Comisionista {
 	 */
 	public void setComision(int comision) {
 		this.comision = comision;
+	}
+
+	/**
+	 * @return the contra
+	 */
+	public String getContra() {
+		return contra;
+	}
+
+	/**
+	 * @param contra the contra to set
+	 */
+	public void setContra(String contra) {
+		this.contra = contra;
+	}
+
+	/**
+	 * @return the user
+	 */
+	public String getUser() {
+		return user;
+	}
+
+	/**
+	 * @param user the user to set
+	 */
+	public void setUser(String user) {
+		this.user = user;
+	}
+
+	/**
+	 * @return the pais
+	 */
+	public String getPais() {
+		return pais;
+	}
+
+	/**
+	 * @param pais the pais to set
+	 */
+	public void setPais(String pais) {
+		this.pais = pais;
 	}
 	
 	

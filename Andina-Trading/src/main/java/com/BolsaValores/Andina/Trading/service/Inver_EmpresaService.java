@@ -3,6 +3,7 @@ package com.BolsaValores.Andina.Trading.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.BolsaValores.Andina.Trading.Repository.RepositoryInver_Empresa;
@@ -11,6 +12,7 @@ import com.BolsaValores.Andina.Trading.model.Inver_Empresa;
 @Service
 public class Inver_EmpresaService {
 
+	@Autowired
 	private RepositoryInver_Empresa repo;
 	
 	public List<Inver_Empresa> getalEmpresas(){
