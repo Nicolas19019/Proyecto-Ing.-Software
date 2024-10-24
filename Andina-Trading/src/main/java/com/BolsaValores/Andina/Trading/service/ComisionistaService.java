@@ -23,16 +23,19 @@ public class ComisionistaService {
 		return repo.findById(id);
 	}
 	
-	public Comisionista createComisionista(Comisionista comisionista) {
-		return repo.save(comisionista);
+	public Comisionista createComisionista(Comisionista comis) {
+		return repo.save(comis);
 	}
 	
-	public Comisionista updateComisionista(Comisionista comisionista) {
-		return repo.save(comisionista);
+	public Comisionista updateComisionista(Comisionista comis) {
+		return repo.save(comis);
 	}
 	
-	public void deleteComisionista(Comisionista comisionista) {
-		repo.delete(comisionista);
+	public void deleteComisionista(int id) {
+		repo.deleteById(id);
 	}
 	
+	public Optional<Comisionista> findByUsuarioAndContrasena(String usuario, String contrasena) {
+        return repo.findByUserAndContrasena(usuario, contrasena);
+	}
 }
