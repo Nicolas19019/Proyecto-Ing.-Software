@@ -21,7 +21,7 @@ import com.BolsaValores.Andina.Trading.service.InversionistaService;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
-@CrossOrigin("*")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/inversionista")
 public class ControllerInversionista {
@@ -39,30 +39,27 @@ public class ControllerInversionista {
 		return service.getinversionistabyid(id);
 	}
 
-	@PostMapping("/agregar/{cedula}/{nombre}/{correo}/{contrasena}/{usuario}/{pais}")
+	@PostMapping("/agregar")
 	public Inversionista createInversionista(
-	        @PathVariable int cedula,
-	        @PathVariable String nombre,
-	        @PathVariable String correo,
-	        @PathVariable String contrasena,
-	        @PathVariable String usuario,
-	        @PathVariable String pais) {
-
-	    Inversionista temp = new Inversionista();
-	    temp.setCedula(cedula);
-	    temp.setContrasena(contrasena);
-	    temp.setCorreo(correo);
-	    temp.setMonto(10000); // O el valor que consideres
-	    temp.setNombre(nombre);
-	    temp.setUsuario(usuario);
-	    temp.setPais(pais);
-
-	    return service.createInversionista(temp);
+	        @RequestParam int cedula,
+	        @RequestParam String nombre,
+	        @RequestParam String correo,
+	        @RequestParam String contrasena,
+	        @RequestParam String usuario,
+	        @RequestParam String pais) {
+	    
+	    Inversionista inver = new Inversionista();
+	    inver.setCedula(cedula);
+	    inver.setNombre(nombre);
+	    inver.setCorreo(correo);
+	    inver.setContrasena(contrasena);
+	    inver.setUsuario(usuario);
+	    inver.setPais(pais);
+	    return service.createInversionista(inver);
 	}
 
-
 	@PutMapping("/{id}")
-	public Inversionista updateInversionista(Inversionista inver) {
+	public Inversionista updateInversionista(@RequestBody Inversionista inver) {
 		return service.createInversionista(inver);
 	}
 
@@ -71,7 +68,7 @@ public class ControllerInversionista {
 		service.deleteinversionista(id);
 	}
 
-	@GetMapping("/login")
+	@PostMapping("/Login")
 	public ResponseEntity<String> login(@RequestParam String usuario, @RequestParam String contrasena) {
 		Optional<Inversionista> inversionista = service.findByUsuarioAndContrasena(usuario, contrasena);
 
