@@ -8,5 +8,5 @@ import com.BolsaValores.Andina.Trading.model.Comisionista;
 
 public interface RepositoryComisionista extends JpaRepository<Comisionista, Integer>{
 
-	Optional<Comisionista> findByUsuarioAndContrasena(String usuario, String contrasena);
+	Optional<Comisionista> findByUserAndContra(String user, String contra);
 }

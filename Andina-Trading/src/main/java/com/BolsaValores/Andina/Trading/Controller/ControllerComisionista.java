@@ -71,8 +71,8 @@ public class ControllerComisionista {
 	}
 
 	@PostMapping("/Login")
-	public ResponseEntity<String> login(@RequestParam String usuario, @RequestParam String contrasena) {
-		Optional<Comisionista> comisionista = service.findByUsuarioAndContrasena(usuario, contrasena);
+	public ResponseEntity<String> login(@RequestParam String user, @RequestParam String contra) {
+		Optional<Comisionista> comisionista = service.findByUserAndContra(user, contra);
 
 		if (comisionista.isPresent()) {
 			return ResponseEntity.ok("Usuario autenticado correctamente.");

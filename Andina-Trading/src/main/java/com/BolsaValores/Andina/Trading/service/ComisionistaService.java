@@ -35,7 +35,7 @@ public class ComisionistaService {
 		repo.deleteById(id);
 	}
 	
-	public Optional<Comisionista> findByUsuarioAndContrasena(String usuario, String contrasena) {
-        return repo.findByUserAndContrasena(usuario, contrasena);
+	public Optional<Comisionista> findByUserAndContra(String user, String contra) {
+        return repo.findByUserAndContra(user, contra);
 	}
 }
