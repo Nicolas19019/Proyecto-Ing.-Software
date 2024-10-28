@@ -22,6 +22,10 @@ public class InversionistaService {
 	public Optional<Inversionista> getinversionistabyid(int id) {
 		return repo.findById(id);
 	}
+	
+	public Optional<Inversionista> findByUsuario(String usuario) {
+		return repo.findByUsuario(usuario);
+	}
 
 	public Inversionista createInversionista(Inversionista inver) {
 		return repo.save(inver);

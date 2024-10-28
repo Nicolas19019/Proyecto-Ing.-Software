@@ -6,7 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.BolsaValores.Andina.Trading.model.Inversionista;
 
-public interface RepositoryInversionista extends JpaRepository<Inversionista, Integer>{
-	
-	 Optional<Inversionista> findByUsuarioAndContrasena(String usuario, String contrasena);
+public interface RepositoryInversionista extends JpaRepository<Inversionista, Integer> {
+
+	Optional<Inversionista> findByUsuarioAndContrasena(String usuario, String contrasena);
+
+	Optional<Inversionista> findByUsuario(String usuario);
 }

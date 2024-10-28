@@ -70,7 +70,7 @@ public class ControllerComisionista {
 		service.deleteComisionista(id);
 	}
 
-	@PostMapping("/Login")
+	@PostMapping("/login")
 	public ResponseEntity<String> login(@RequestParam String user, @RequestParam String contra) {
 		Optional<Comisionista> comisionista = service.findByUserAndContra(user, contra);
 

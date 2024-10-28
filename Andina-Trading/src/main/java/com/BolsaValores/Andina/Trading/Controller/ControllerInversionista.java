@@ -38,6 +38,11 @@ public class ControllerInversionista {
 	public Optional<Inversionista> getinversionistabyid(@PathVariable int id) {
 		return service.getinversionistabyid(id);
 	}
+	
+	@GetMapping("/{user}")
+	public Optional<Inversionista> getinversionistabyusuario(@PathVariable String usuario){
+		return service.findByUsuario(usuario);
+	}
 
 	@PostMapping("/agregar")
 	public Inversionista createInversionista(
@@ -68,7 +73,7 @@ public class ControllerInversionista {
 		service.deleteinversionista(id);
 	}
 
-	@PostMapping("/Login")
+	@PostMapping("/login")
 	public ResponseEntity<String> login(@RequestParam String usuario, @RequestParam String contrasena) {
 		Optional<Inversionista> inversionista = service.findByUsuarioAndContrasena(usuario, contrasena);
 
