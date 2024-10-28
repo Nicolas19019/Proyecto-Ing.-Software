@@ -39,7 +39,7 @@ public class ControllerInversionista {
 		return service.getinversionistabyid(id);
 	}
 	
-	@GetMapping("/{user}")
+	@GetMapping("/pasarinfo/{usuario}")
 	public Optional<Inversionista> getinversionistabyusuario(@PathVariable String usuario){
 		return service.findByUsuario(usuario);
 	}
