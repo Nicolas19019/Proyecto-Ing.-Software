@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.BolsaValores.Andina.Trading.model.Comisionista;
+import com.BolsaValores.Andina.Trading.model.Inversionista;
 import com.BolsaValores.Andina.Trading.service.ComisionistaService;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -44,7 +45,6 @@ public class ControllerComisionista {
 	        @RequestParam int cedula,
 	        @RequestParam String correo,
 	        @RequestParam String nombre,
-	        @RequestParam int comision,
 	        @RequestParam String contrasena,
 	        @RequestParam String usuario,
 	        @RequestParam String pais) {
@@ -53,7 +53,6 @@ public class ControllerComisionista {
 		comi.setCedula(cedula);
 		comi.setCorreo(correo);
 		comi.setNombre(nombre);
-		comi.setComision(comision);
 		comi.setContra(contrasena);
 		comi.setUser(usuario);
 		comi.setPais(pais);
@@ -79,6 +78,10 @@ public class ControllerComisionista {
 		} else {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario o contraseña incorrectos.");
 		}
+	}
+	@GetMapping("/pasarinfo/{user}")
+	public Optional<Comisionista> getinversionistabyuser(@PathVariable String user){
+		return service.findByUser(user);
 	}
 
 }

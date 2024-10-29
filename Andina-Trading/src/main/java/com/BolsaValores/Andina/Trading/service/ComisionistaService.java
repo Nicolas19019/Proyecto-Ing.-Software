@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.BolsaValores.Andina.Trading.Repository.RepositoryComisionista;
 import com.BolsaValores.Andina.Trading.model.Comisionista;
+import com.BolsaValores.Andina.Trading.model.Inversionista;
 
 @Service
 public class ComisionistaService {
@@ -21,6 +22,10 @@ public class ComisionistaService {
 	
 	public Optional<Comisionista> getcomisionistabyid(int id){
 		return repo.findById(id);
+	}
+	
+	public Optional<Comisionista> findByUser(String usuario) {
+		return repo.findByUser(usuario);
 	}
 	
 	public Comisionista createComisionista(Comisionista comis) {
