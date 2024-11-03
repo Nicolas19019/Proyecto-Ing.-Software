@@ -68,6 +68,72 @@ public class ControllerComisionista {
 	public void deletecomisionista(int id) {
 		service.deleteComisionista(id);
 	}
+	
+	@DeleteMapping("/borrarcuenta/{user}")
+	public void deletecomisionistabyuser(String user) {
+		service.deleteComisionistaByUsuario(user);
+	}
+
+	
+	@PutMapping("/cambiarnombre/{user}")
+	public ResponseEntity<Comisionista> actualizarNombre(@PathVariable String user, @RequestParam String nombre) {
+		Optional<Comisionista> optionalInver = service.findByUser(user);
+
+		if (optionalInver.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+
+		Comisionista comisionista = optionalInver.get();
+		comisionista.setNombre(nombre);
+
+		Comisionista updatedInver = service.updateComisionista(comisionista);
+		return ResponseEntity.ok(updatedInver);
+	}
+
+	@PutMapping("/cambiarcorreo/{user}")
+	public ResponseEntity<Comisionista> actualizarCorreo(@PathVariable String user, @RequestParam String correo) {
+		Optional<Comisionista> optionalInver = service.findByUser(user);
+
+		if (optionalInver.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+
+		Comisionista comisionista = optionalInver.get();
+		comisionista.setCorreo(correo);
+
+		Comisionista updatedInver = service.updateComisionista(comisionista);
+		return ResponseEntity.ok(updatedInver);
+	}
+	
+	@PutMapping("/cambiarUsuario/{user}")
+	public ResponseEntity<Comisionista> actualizarUser(@PathVariable String user, @RequestParam String user2) {
+		Optional<Comisionista> optionalInver = service.findByUser(user);
+
+		if (optionalInver.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+
+		Comisionista comisionista = optionalInver.get();
+		comisionista.setUser(user2);
+
+		Comisionista updatedInver = service.updateComisionista(comisionista);
+		return ResponseEntity.ok(updatedInver);
+	}
+	
+	@PutMapping("/cambiarPais/{user}")
+	public ResponseEntity<Comisionista> actualizarPais(@PathVariable String user, @RequestParam String pais) {
+		Optional<Comisionista> optionalInver = service.findByUser(user);
+
+		if (optionalInver.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+
+		Comisionista comisionista = optionalInver.get();
+		comisionista.setPais(pais);
+
+		Comisionista updatedInver = service.updateComisionista(comisionista);
+		return ResponseEntity.ok(updatedInver);
+	}
 
 	@PostMapping("/login")
 	public ResponseEntity<String> login(@RequestParam String user, @RequestParam String contra) {
@@ -80,7 +146,7 @@ public class ControllerComisionista {
 		}
 	}
 	@GetMapping("/pasarinfo/{user}")
-	public Optional<Comisionista> getinversionistabyuser(@PathVariable String user){
+	public Optional<Comisionista> getcomisionistabyuser(@PathVariable String user){
 		return service.findByUser(user);
 	}
 

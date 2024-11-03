@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.BolsaValores.Andina.Trading.Repository.RepositoryComisionista;
 import com.BolsaValores.Andina.Trading.model.Comisionista;
-import com.BolsaValores.Andina.Trading.model.Inversionista;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class ComisionistaService {
@@ -39,6 +40,12 @@ public class ComisionistaService {
 	public void deleteComisionista(int id) {
 		repo.deleteById(id);
 	}
+	
+	@Transactional
+	public void deleteComisionistaByUsuario(String usuario) {
+		repo.deleteByUser(usuario);
+	}
+
 	
 	public Optional<Comisionista> findByUserAndContra(String user, String contra) {
         return repo.findByUserAndContra(user, contra);

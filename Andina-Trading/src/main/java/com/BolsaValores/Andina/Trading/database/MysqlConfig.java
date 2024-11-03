@@ -24,6 +24,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
     transactionManagerRef = "mysqlTrxManager"
 )
 @EnableTransactionManagement
+
 public class MysqlConfig {
 
     @Primary

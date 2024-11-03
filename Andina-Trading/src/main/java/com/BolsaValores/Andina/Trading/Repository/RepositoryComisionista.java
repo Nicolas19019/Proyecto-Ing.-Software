@@ -11,4 +11,6 @@ public interface RepositoryComisionista extends JpaRepository<Comisionista, Inte
 	Optional<Comisionista> findByUserAndContra(String user, String contra);
 	
 	Optional<Comisionista> findByUser(String user);
+	
+	 void deleteByUser(String user);
 }
