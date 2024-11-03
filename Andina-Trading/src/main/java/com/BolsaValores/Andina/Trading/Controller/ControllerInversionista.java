@@ -38,29 +38,100 @@ public class ControllerInversionista {
 	public Optional<Inversionista> getinversionistabyid(@PathVariable int id) {
 		return service.getinversionistabyid(id);
 	}
-	
+
 	@GetMapping("/pasarinfo/{usuario}")
-	public Optional<Inversionista> getinversionistabyusuario(@PathVariable String usuario){
+	public Optional<Inversionista> getinversionistabyusuario(@PathVariable String usuario) {
 		return service.findByUsuario(usuario);
 	}
 
 	@PostMapping("/agregar")
-	public Inversionista createInversionista(
-	        @RequestParam int cedula,
-	        @RequestParam String nombre,
-	        @RequestParam String correo,
-	        @RequestParam String contrasena,
-	        @RequestParam String usuario,
-	        @RequestParam String pais) {
-	    
-	    Inversionista inver = new Inversionista();
-	    inver.setCedula(cedula);
-	    inver.setNombre(nombre);
-	    inver.setCorreo(correo);
-	    inver.setContrasena(contrasena);
-	    inver.setUsuario(usuario);
-	    inver.setPais(pais);
-	    return service.createInversionista(inver);
+	public Inversionista createInversionista(@RequestParam int cedula, @RequestParam String nombre,
+			@RequestParam String correo, @RequestParam String contrasena, @RequestParam String usuario,
+			@RequestParam String pais) {
+
+		Inversionista inver = new Inversionista();
+		inver.setCedula(cedula);
+		inver.setNombre(nombre);
+		inver.setCorreo(correo);
+		inver.setContrasena(contrasena);
+		inver.setUsuario(usuario);
+		inver.setPais(pais);
+		return service.createInversionista(inver);
+	}
+
+	@PutMapping("/AgregarBilletera/{usuario}")
+	public ResponseEntity<Inversionista> actualizarMonto(@PathVariable String usuario, @RequestParam int monto) {
+		Optional<Inversionista> optionalInver = service.findByUsuario(usuario);
+
+		if (optionalInver.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+
+		Inversionista inver = optionalInver.get();
+		inver.setMonto(monto);
+
+		Inversionista updatedInver = service.updateInversionista(inver);
+		return ResponseEntity.ok(updatedInver);
+	}
+
+	@PutMapping("/cambiarnombre/{usuario}")
+	public ResponseEntity<Inversionista> actualizarNombre(@PathVariable String usuario, @RequestParam String nombre) {
+		Optional<Inversionista> optionalInver = service.findByUsuario(usuario);
+
+		if (optionalInver.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+
+		Inversionista inver = optionalInver.get();
+		inver.setNombre(nombre);
+
+		Inversionista updatedInver = service.updateInversionista(inver);
+		return ResponseEntity.ok(updatedInver);
+	}
+
+	@PutMapping("/cambiarcorreo/{usuario}")
+	public ResponseEntity<Inversionista> actualizarCorreo(@PathVariable String usuario, @RequestParam String correo) {
+		Optional<Inversionista> optionalInver = service.findByUsuario(usuario);
+
+		if (optionalInver.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+
+		Inversionista inver = optionalInver.get();
+		inver.setCorreo(correo);
+
+		Inversionista updatedInver = service.updateInversionista(inver);
+		return ResponseEntity.ok(updatedInver);
+	}
+	
+	@PutMapping("/cambiarUsuario/{usuario}")
+	public ResponseEntity<Inversionista> actualizarUsuario(@PathVariable String usuario, @RequestParam String usuario2) {
+		Optional<Inversionista> optionalInver = service.findByUsuario(usuario);
+
+		if (optionalInver.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+
+		Inversionista inver = optionalInver.get();
+		inver.setUsuario(usuario2);
+
+		Inversionista updatedInver = service.updateInversionista(inver);
+		return ResponseEntity.ok(updatedInver);
+	}
+	
+	@PutMapping("/cambiarPais/{usuario}")
+	public ResponseEntity<Inversionista> actualizarPais(@PathVariable String usuario, @RequestParam String pais) {
+		Optional<Inversionista> optionalInver = service.findByUsuario(usuario);
+
+		if (optionalInver.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+
+		Inversionista inver = optionalInver.get();
+		inver.setPais(pais);
+
+		Inversionista updatedInver = service.updateInversionista(inver);
+		return ResponseEntity.ok(updatedInver);
 	}
 
 	@PutMapping("/{id}")
@@ -72,6 +143,13 @@ public class ControllerInversionista {
 	public void deleteinversionista(int id) {
 		service.deleteinversionista(id);
 	}
+	
+	 @DeleteMapping("/Borrarcuenta/{usuario}")
+	    public ResponseEntity<Void> deleteInversionista(@PathVariable String usuario) {
+		 service.deleteInversionistaByUsuario(usuario);
+	        return ResponseEntity.ok().build();
+	    }
+
 
 	@PostMapping("/login")
 	public ResponseEntity<String> login(@RequestParam String usuario, @RequestParam String contrasena) {

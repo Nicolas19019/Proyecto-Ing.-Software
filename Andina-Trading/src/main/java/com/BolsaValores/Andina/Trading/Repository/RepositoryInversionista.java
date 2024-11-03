@@ -11,4 +11,6 @@ public interface RepositoryInversionista extends JpaRepository<Inversionista, In
 	Optional<Inversionista> findByUsuarioAndContrasena(String usuario, String contrasena);
 
 	Optional<Inversionista> findByUsuario(String usuario);
+	
+	 void deleteByUsuario(String usuario);
 }

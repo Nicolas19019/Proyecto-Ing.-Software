@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.BolsaValores.Andina.Trading.Repository.RepositoryInversionista;
 import com.BolsaValores.Andina.Trading.model.Inversionista;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class InversionistaService {
 
@@ -22,7 +24,7 @@ public class InversionistaService {
 	public Optional<Inversionista> getinversionistabyid(int id) {
 		return repo.findById(id);
 	}
-	
+
 	public Optional<Inversionista> findByUsuario(String usuario) {
 		return repo.findByUsuario(usuario);
 	}
@@ -34,13 +36,18 @@ public class InversionistaService {
 	public Inversionista updateInversionista(Inversionista inver) {
 		return repo.save(inver);
 	}
-	
+
 	public void deleteinversionista(int id) {
 		repo.deleteById(id);
 	}
 
+	@Transactional
+	public void deleteInversionistaByUsuario(String usuario) {
+		repo.deleteByUsuario(usuario);
+	}
+
 	public Optional<Inversionista> findByUsuarioAndContrasena(String usuario, String contrasena) {
-        return repo.findByUsuarioAndContrasena(usuario, contrasena);
-    }
-	
+		return repo.findByUsuarioAndContrasena(usuario, contrasena);
+	}
+
 }
