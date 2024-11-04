@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.BolsaValores.Andina.Trading.model.Asesoria;
 import com.BolsaValores.Andina.Trading.service.AsesoriaService;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @CrossOrigin(origins = "*")
 @RestController
