@@ -39,7 +39,7 @@ public class ControllerTarjeta {
 
 	@PostMapping("/agregar")
 	public Tarjeta createTarjeta(@RequestParam int id_inversionista, @RequestParam String numero_tarjeta,
-			@RequestParam String nombre_titular, @RequestParam Date fecha_vencimiento,
+			@RequestParam String nombre_titular, @RequestParam String fecha_vencimiento,
 			 @RequestParam int cvv) {
 
 		Tarjeta tarjeta = new Tarjeta();

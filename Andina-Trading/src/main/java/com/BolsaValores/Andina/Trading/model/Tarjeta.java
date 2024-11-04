@@ -25,7 +25,7 @@ public class Tarjeta {
 	private String nombre_titular;
 	
 	@Column(name="fecha_vencimiento")
-	private Date fecha_vencimiento;
+	private String fecha_vencimiento;
 	
 	@Column(name="tipo_tarjeta")
 	private String tipo_tarjeta;
@@ -92,14 +92,14 @@ public class Tarjeta {
 	/**
 	 * @return the fecha_vencimiento
 	 */
-	public Date getFecha_vencimiento() {
+	public String getFecha_vencimiento() {
 		return fecha_vencimiento;
 	}
 
 	/**
 	 * @param fecha_vencimiento the fecha_vencimiento to set
 	 */
-	public void setFecha_vencimiento(Date fecha_vencimiento) {
+	public void setFecha_vencimiento(String fecha_vencimiento) {
 		this.fecha_vencimiento = fecha_vencimiento;
 	}
 
