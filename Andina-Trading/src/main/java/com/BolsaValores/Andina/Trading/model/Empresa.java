@@ -16,11 +16,8 @@ public class Empresa {
 	@Column(name = "ValorAccion")
 	private int valorAccion;
 	
-	@Column(name = "TotalAcciones")
-	private int TotalAcciones;
-	
-	@Column(name = "sector")
-	private String sector;
+	@Column(name = "nonbre")
+	private String nombre;
 
 	/**
 	 * @return the idEmpresa
@@ -51,26 +48,18 @@ public class Empresa {
 	}
 
 	/**
-	 * @return the totalAcciones
+	 * @return the nombre
 	 */
-	public int getTotalAcciones() {
-		return TotalAcciones;
+	public String getNombre() {
+		return nombre;
 	}
 
 	/**
-	 * @param totalAcciones the totalAcciones to set
+	 * @param nombre the nombre to set
 	 */
-	public void setTotalAcciones(int totalAcciones) {
-		TotalAcciones = totalAcciones;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
-	
-	public String getSector() {
-		return sector;
-	}
-	public void setSector(String sector) {
-		this.sector = sector;
-	}
-	
-	
 
+	
 }

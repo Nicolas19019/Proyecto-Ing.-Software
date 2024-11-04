@@ -99,6 +99,20 @@ public class Asesoria {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
+
+	/**
+	 * @return the hora
+	 */
+	public String getHora() {
+		return hora;
+	}
+
+	/**
+	 * @param hora the hora to set
+	 */
+	public void setHora(String hora) {
+		this.hora = hora;
+	}
 	
 	
 	

@@ -34,4 +34,8 @@ public class AsesoriaService {
 	public void deleteAsesoria(int id) {
 		repo.deleteById(id);
 	}
+	
+	public Optional<Asesoria> findByidInversionista(int idInversionista) {
+        return repo.findByidInversionista(idInversionista);
+    }
 }
