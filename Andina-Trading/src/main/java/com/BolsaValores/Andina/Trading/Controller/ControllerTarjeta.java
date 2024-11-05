@@ -2,9 +2,11 @@ package com.BolsaValores.Andina.Trading.Controller;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +34,15 @@ public class ControllerTarjeta {
 		return service.getallTarjeta();
 	}
 
+	@GetMapping("/existe")
+	public ResponseEntity<?> verificarTarjetaExistente(@RequestParam int idInversionista) {
+		
+		boolean tieneTarjeta = service.tieneTarjeta(idInversionista);
+
+
+		return ResponseEntity.ok().body(Map.of("tieneTarjeta", tieneTarjeta));
+	}
+
 	@GetMapping("/{id}")
 	public Optional<Tarjeta> getTarjetabyid(@PathVariable int id) {
 		return service.getTarjetabyid(id);
@@ -39,13 +50,12 @@ public class ControllerTarjeta {
 
 	@PostMapping("/agregar")
 	public Tarjeta createTarjeta(@RequestParam int id_inversionista, @RequestParam String numero_tarjeta,
-			@RequestParam String nombre_titular, @RequestParam String fecha_vencimiento,
-			 @RequestParam int cvv) {
+			@RequestParam String nombre_titular, @RequestParam String fecha_vencimiento, @RequestParam int cvv) {
 
 		Tarjeta tarjeta = new Tarjeta();
 		tarjeta.setCvv(cvv);
 		tarjeta.setFecha_vencimiento(fecha_vencimiento);
-		tarjeta.setId_inversionista(id_inversionista);
+		tarjeta.setIdInversionista(id_inversionista);
 		tarjeta.setNombre_titular(nombre_titular);
 		tarjeta.setNumero_tarjeta(numero_tarjeta);
 		tarjeta.setTipo_tarjeta("Visa");

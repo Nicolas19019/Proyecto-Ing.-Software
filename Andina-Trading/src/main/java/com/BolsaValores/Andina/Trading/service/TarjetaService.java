@@ -35,4 +35,8 @@ public class TarjetaService {
 		repo.deleteById(id);
 	}
 	
+	 public boolean tieneTarjeta(int idInversionista) {
+	        return repo.existsByidInversionista(idInversionista);
+	    }
+	
 }

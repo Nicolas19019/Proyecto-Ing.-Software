@@ -6,4 +6,6 @@ import com.BolsaValores.Andina.Trading.model.Tarjeta;
 
 public interface RepositoryTarjeta extends JpaRepository<Tarjeta, Integer> {
 
+	
+	boolean existsByidInversionista(int idInversionista);
 }

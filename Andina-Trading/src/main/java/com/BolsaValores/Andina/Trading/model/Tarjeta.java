@@ -16,7 +16,7 @@ public class Tarjeta {
 	private int id_tarjeta;
 	
 	@Column(name="id_inversionista")
-	private int id_inversionista;
+	private int idInversionista;
 	
 	@Column(name="numero_tarjeta")
 	private String numero_tarjeta;
@@ -48,17 +48,17 @@ public class Tarjeta {
 	}
 
 	/**
-	 * @return the id_inversionista
+	 * @return the idInversionista
 	 */
-	public int getId_inversionista() {
-		return id_inversionista;
+	public int getIdInversionista() {
+		return idInversionista;
 	}
 
 	/**
-	 * @param id_inversionista the id_inversionista to set
+	 * @param idInversionista the idInversionista to set
 	 */
-	public void setId_inversionista(int id_inversionista) {
-		this.id_inversionista = id_inversionista;
+	public void setIdInversionista(int idInversionista) {
+		this.idInversionista = idInversionista;
 	}
 
 	/**
