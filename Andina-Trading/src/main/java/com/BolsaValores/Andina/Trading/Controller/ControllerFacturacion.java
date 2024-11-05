@@ -38,6 +38,11 @@ public class ControllerFacturacion {
 	public Optional<Factura> getFacturabyid(@PathVariable int id) {
 		return service.getFacturabyid(id);
 	}
+	
+	@GetMapping("/estado/{estado}")
+	public List<Factura> getFacturabyid(@PathVariable String estado) {
+		return service.getFacturabyestado(estado);
+	}
 
 	@PostMapping("/agregar")
 	public ResponseEntity<Integer> createFactura(

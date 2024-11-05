@@ -13,10 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import com.BolsaValores.Andina.Trading.model.Tarjeta;
 import com.BolsaValores.Andina.Trading.service.TarjetaService;
@@ -36,9 +37,8 @@ public class ControllerTarjeta {
 
 	@GetMapping("/existe")
 	public ResponseEntity<?> verificarTarjetaExistente(@RequestParam int idInversionista) {
-		
-		boolean tieneTarjeta = service.tieneTarjeta(idInversionista);
 
+		boolean tieneTarjeta = service.tieneTarjeta(idInversionista);
 
 		return ResponseEntity.ok().body(Map.of("tieneTarjeta", tieneTarjeta));
 	}
@@ -46,6 +46,11 @@ public class ControllerTarjeta {
 	@GetMapping("/{id}")
 	public Optional<Tarjeta> getTarjetabyid(@PathVariable int id) {
 		return service.getTarjetabyid(id);
+	}
+	
+	@GetMapping("/info/{idinversionista}")
+	public Optional<Tarjeta> getTarjetabyidinversionista(@PathVariable int idinversionista) {
+		return service.getTarjetabyidinversionista(idinversionista);
 	}
 
 	@PostMapping("/agregar")
@@ -67,9 +72,26 @@ public class ControllerTarjeta {
 		service.deleteTarjeta(id);
 	}
 
-	@PutMapping("/{id}")
-	public Tarjeta updateTarjeta(@PathVariable int id, @RequestBody Tarjeta tarjeta) {
-		return service.updateTarjeta(tarjeta);
+	
+	@PutMapping("/{idInversionista}")
+	public ResponseEntity<Tarjeta> actualizarPais(@RequestParam int idInversionista , @RequestParam String numero_tarjeta,
+			@RequestParam String nombre_titular, @RequestParam String fecha_vencimiento, @RequestParam int cvvs) {
+		Optional<Tarjeta> optionalInver = service.getTarjetabyidinversionista(idInversionista);
+
+		if (optionalInver.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+
+		Tarjeta tarjeta = optionalInver.get();
+		tarjeta.setCvv(cvvs);
+		tarjeta.setFecha_vencimiento(fecha_vencimiento);
+		tarjeta.setIdInversionista(idInversionista);
+		tarjeta.setNombre_titular(nombre_titular);
+		tarjeta.setNumero_tarjeta(numero_tarjeta);
+		tarjeta.setTipo_tarjeta("visa");
+
+		Tarjeta tarjetaactualizada = service.updateTarjeta(tarjeta);
+		return ResponseEntity.ok(tarjetaactualizada);
 	}
 
 }

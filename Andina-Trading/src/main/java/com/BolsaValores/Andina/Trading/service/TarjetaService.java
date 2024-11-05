@@ -14,29 +14,34 @@ public class TarjetaService {
 
 	@Autowired
 	private RepositoryTarjeta repo;
-	
-	public List<Tarjeta> getallTarjeta(){
+
+	public List<Tarjeta> getallTarjeta() {
 		return repo.findAll();
 	}
-	
-	public Optional<Tarjeta> getTarjetabyid(int id){
+
+	public Optional<Tarjeta> getTarjetabyid(int id) {
 		return repo.findById(id);
 	}
 	
+	public Optional<Tarjeta> getTarjetabyidinversionista(int id_inversionista){
+		
+		return repo.findByIdInversionista(id_inversionista);
+	}
+
 	public Tarjeta createTarjeta(Tarjeta tarjeta) {
 		return repo.save(tarjeta);
 	}
-	
+
 	public Tarjeta updateTarjeta(Tarjeta tarjeta) {
 		return repo.save(tarjeta);
 	}
-	
+
 	public void deleteTarjeta(int id) {
 		repo.deleteById(id);
 	}
-	
-	 public boolean tieneTarjeta(int idInversionista) {
-	        return repo.existsByidInversionista(idInversionista);
-	    }
-	
+
+	public boolean tieneTarjeta(int idInversionista) {
+		return repo.existsByidInversionista(idInversionista);
+	}
+
 }
