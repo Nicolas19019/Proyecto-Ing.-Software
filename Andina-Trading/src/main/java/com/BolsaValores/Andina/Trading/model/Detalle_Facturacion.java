@@ -23,7 +23,7 @@ public class Detalle_Facturacion {
 	private int cantidad;
 	
 	@Column(name="valor")
-	private int valor;
+	private double valor;
 
 
 	/**
@@ -85,14 +85,14 @@ public class Detalle_Facturacion {
 	/**
 	 * @return the valor
 	 */
-	public int getValor() {
+	public double getValor() {
 		return valor;
 	}
 
 	/**
 	 * @param valor the valor to set
 	 */
-	public void setValor(int valor) {
+	public void setValor(double valor) {
 		this.valor = valor;
 	}
 	

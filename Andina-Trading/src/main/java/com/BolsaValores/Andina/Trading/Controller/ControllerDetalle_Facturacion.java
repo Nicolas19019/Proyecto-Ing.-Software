@@ -38,7 +38,7 @@ public class ControllerDetalle_Facturacion {
 
 	@PostMapping("/agregar")
 	public Detalle_Facturacion createDetalle_Facturacion(@RequestParam int id_factura,
-			@RequestParam String nombre_accion, @RequestParam int cantidad, @RequestParam int valor) {
+			@RequestParam String nombre_accion, @RequestParam int cantidad, @RequestParam double valor) {
 
 		Detalle_Facturacion deta_facturas = new Detalle_Facturacion();
 		deta_facturas.setCantidad(cantidad);
