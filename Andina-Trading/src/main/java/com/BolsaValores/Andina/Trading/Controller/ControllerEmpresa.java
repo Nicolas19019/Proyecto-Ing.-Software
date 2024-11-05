@@ -38,7 +38,7 @@ public class ControllerEmpresa {
 	}
 
 	@PostMapping("/agregar")
-	public Empresa createEmpresa(@RequestParam int valorAccion, @RequestParam String nombre) {
+	public Empresa createEmpresa(@RequestParam double valorAccion, @RequestParam String nombre) {
 
 		Empresa empresa = new Empresa();
 		empresa.setNombre(nombre);

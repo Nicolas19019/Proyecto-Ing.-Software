@@ -14,9 +14,9 @@ public class Empresa {
 	private int idEmpresa;
 	
 	@Column(name = "ValorAccion")
-	private int valorAccion;
+	private double valorAccion;
 	
-	@Column(name = "nonbre")
+	@Column(name = "nombre")
 	private String nombre;
 
 	/**
@@ -36,14 +36,14 @@ public class Empresa {
 	/**
 	 * @return the valorAccion
 	 */
-	public int getValorAccion() {
+	public double getValorAccion() {
 		return valorAccion;
 	}
 
 	/**
 	 * @param valorAccion the valorAccion to set
 	 */
-	public void setValorAccion(int valorAccion) {
+	public void setValorAccion(double valorAccion) {
 		this.valorAccion = valorAccion;
 	}
 
