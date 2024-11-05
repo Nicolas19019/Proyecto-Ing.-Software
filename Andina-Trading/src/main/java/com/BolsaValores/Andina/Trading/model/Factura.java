@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -12,6 +14,7 @@ import jakarta.persistence.Table;
 public class Factura {
 	
 	@Id
+	 @GeneratedValue(strategy = GenerationType.IDENTITY) 
 	@Column(name="id_factura")
 	private int id_factura;
 	
@@ -22,12 +25,10 @@ public class Factura {
 	private Date fecha_factura;
 	
 	@Column(name="total")
-	private int total;
+	private double total;
 	
 	@Column(name="estado")
 	private String estado;
-
-
 
 	/**
 	 * @return the id_factura
@@ -74,14 +75,14 @@ public class Factura {
 	/**
 	 * @return the total
 	 */
-	public int getTotal() {
+	public double getTotal() {
 		return total;
 	}
 
 	/**
 	 * @param total the total to set
 	 */
-	public void setTotal(int total) {
+	public void setTotal(double total) {
 		this.total = total;
 	}
 

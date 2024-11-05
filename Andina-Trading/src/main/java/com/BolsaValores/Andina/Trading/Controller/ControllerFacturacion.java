@@ -1,10 +1,12 @@
 package com.BolsaValores.Andina.Trading.Controller;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,20 +40,21 @@ public class ControllerFacturacion {
 	}
 
 	@PostMapping("/agregar")
-	public Factura createFactura(@RequestParam int id_inversionista, @RequestParam Date fecha_factura,
-			@RequestParam int total, @RequestParam String estado) {
+	public ResponseEntity<Integer> createFactura(
+	        @RequestParam int id_inversionista,
+	        @RequestParam Date fecha_factura,
+	        @RequestParam double total,
+	        @RequestParam String estado) {
 
-		Factura fact = new Factura();
-		fact.setEstado(estado);
-		fact.setFecha_factura(fecha_factura);
-		fact.setId_inversionista(id_inversionista);
-		fact.setTotal(total);
-		return service.createFactura(fact);
-	}
+	    Factura fact = new Factura();
+	    fact.setEstado(estado);
+	    fact.setFecha_factura(fecha_factura);
+	    fact.setId_inversionista(id_inversionista);
+	    fact.setTotal(total);
 
-	@DeleteMapping("/{id}")
-	public void deleteFactura(int id) {
-		service.deleteFactura(id);
+	    Factura nuevaFactura = service.createFactura(fact); // Asegúrate de que este método devuelva la factura con ID
+
+	    return ResponseEntity.ok(nuevaFactura.getId_factura()); // Devuelve la factura creada con el ID
 	}
 
 	@PutMapping("/{id}")
