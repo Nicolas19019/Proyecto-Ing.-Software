@@ -28,6 +28,10 @@ public class FacturacionService {
 		return repo.findByEstado(estado);
 	}
 	
+	public List<Factura> getFacturabyidinversionista(int id_inversionista){
+		return repo.findbyIdinversionista(id_inversionista);
+	}
+	
 	public Factura createFactura(Factura fact) {
 		return repo.save(fact);
 	}

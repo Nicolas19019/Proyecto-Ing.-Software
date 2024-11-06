@@ -10,5 +10,5 @@ import com.BolsaValores.Andina.Trading.model.Factura;
 public interface RepositoryFacturacion extends JpaRepository<Factura, Integer>{
 
 	List<Factura> findByEstado(String estado);
-	
+	List<Factura> findbyIdinversionista(int id_inversionista);
 }

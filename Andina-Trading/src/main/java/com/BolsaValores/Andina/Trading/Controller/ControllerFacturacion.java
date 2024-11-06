@@ -43,6 +43,11 @@ public class ControllerFacturacion {
 	public List<Factura> getFacturabyid(@PathVariable String estado) {
 		return service.getFacturabyestado(estado);
 	}
+	
+	@GetMapping("/lista/{id_inversionsita}")
+	public List<Factura> getFacturabyidinversionista(@PathVariable int id_inversionsita) {
+		return service.getFacturabyidinversionista(id_inversionsita);
+	}
 
 	@PostMapping("/agregar")
 	public ResponseEntity<Integer> createFactura(
