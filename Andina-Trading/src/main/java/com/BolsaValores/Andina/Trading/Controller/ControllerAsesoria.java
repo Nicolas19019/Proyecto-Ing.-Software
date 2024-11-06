@@ -42,7 +42,7 @@ public class ControllerAsesoria {
 	public Asesoria createComisionista(
 	        @RequestParam int idComisionista,
 	        @RequestParam int idInversionista,
-	        @RequestParam int montoPagado,
+	        @RequestParam double montoPagado,
 	        @RequestParam Date fecha,
 	        @RequestParam String hora) {
 	    

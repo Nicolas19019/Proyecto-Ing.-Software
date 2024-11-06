@@ -22,7 +22,7 @@ public class Asesoria {
 	private int idInversionista;
 	
 	@Column(name = "MontoPagado")
-	private int montoPagado;
+	private double montoPagado;
 	
 	@Column(name = "Fecha")
 	private Date fecha;
@@ -75,14 +75,14 @@ public class Asesoria {
 	/**
 	 * @return the montoPagado
 	 */
-	public int getMontoPagado() {
+	public double getMontoPagado() {
 		return montoPagado;
 	}
 
 	/**
 	 * @param montoPagado the montoPagado to set
 	 */
-	public void setMontoPagado(int montoPagado) {
+	public void setMontoPagado(double montoPagado) {
 		this.montoPagado = montoPagado;
 	}
 
