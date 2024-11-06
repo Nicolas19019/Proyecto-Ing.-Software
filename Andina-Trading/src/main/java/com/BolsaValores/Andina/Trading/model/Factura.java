@@ -19,7 +19,7 @@ public class Factura {
 	private int id_factura;
 	
 	@Column(name="id_inversionista")
-	private int id_inversionista;
+	private int idinversionista;
 	
 	@Column(name="fecha_factura")
 	private Date fecha_factura;
@@ -45,17 +45,17 @@ public class Factura {
 	}
 
 	/**
-	 * @return the id_inversionista
+	 * @return the idinversionista
 	 */
-	public int getId_inversionista() {
-		return id_inversionista;
+	public int getIdinversionista() {
+		return idinversionista;
 	}
 
 	/**
-	 * @param id_inversionista the id_inversionista to set
+	 * @param idinversionista the idinversionista to set
 	 */
-	public void setId_inversionista(int id_inversionista) {
-		this.id_inversionista = id_inversionista;
+	public void setIdinversionista(int idinversionista) {
+		this.idinversionista = idinversionista;
 	}
 
 	/**

@@ -14,7 +14,7 @@ public class Detalle_Facturacion {
 	private int id_detalle;
 	
 	@Column(name="id_factura")
-	private int id_factura;
+	private int idfactura;
 	
 	@Column(name="nombre_accion")
 	private String nombre_accion;
@@ -41,17 +41,17 @@ public class Detalle_Facturacion {
 	}
 
 	/**
-	 * @return the id_factura
+	 * @return the idfactura
 	 */
-	public int getId_factura() {
-		return id_factura;
+	public int getIdfactura() {
+		return idfactura;
 	}
 
 	/**
-	 * @param id_factura the id_factura to set
+	 * @param idfactura the idfactura to set
 	 */
-	public void setId_factura(int id_factura) {
-		this.id_factura = id_factura;
+	public void setIdfactura(int idfactura) {
+		this.idfactura = idfactura;
 	}
 
 	/**

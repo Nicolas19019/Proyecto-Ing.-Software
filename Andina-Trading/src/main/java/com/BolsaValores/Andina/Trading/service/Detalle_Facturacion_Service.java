@@ -19,7 +19,11 @@ public class Detalle_Facturacion_Service {
 		return repo.findAll();
 	}
 	
-	public Optional<Detalle_Facturacion> getDetalle_Facturacionyid(int id){
+	public List<Detalle_Facturacion> getDetalle_FacturacionByidfactura(int idfactura){
+		return repo.findByIdfactura(idfactura);
+	}
+	
+	public Optional<Detalle_Facturacion> getDetalle_Facturacionbyid(int id){
 		return repo.findById(id);
 	}
 	

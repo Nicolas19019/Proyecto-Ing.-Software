@@ -19,13 +19,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.BolsaValores.Andina.Trading.model.Factura;
+import com.BolsaValores.Andina.Trading.model.Tarjeta;
 import com.BolsaValores.Andina.Trading.service.FacturacionService;
 
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/facturacion")
 public class ControllerFacturacion {
-	
+
 	@Autowired
 	private FacturacionService service;
 
@@ -38,37 +39,63 @@ public class ControllerFacturacion {
 	public Optional<Factura> getFacturabyid(@PathVariable int id) {
 		return service.getFacturabyid(id);
 	}
-	
+
 	@GetMapping("/estado/{estado}")
 	public List<Factura> getFacturabyid(@PathVariable String estado) {
 		return service.getFacturabyestado(estado);
 	}
-	
+
 	@GetMapping("/lista/{id_inversionsita}")
 	public List<Factura> getFacturabyidinversionista(@PathVariable int id_inversionsita) {
 		return service.getFacturabyidinversionista(id_inversionsita);
 	}
 
 	@PostMapping("/agregar")
-	public ResponseEntity<Integer> createFactura(
-	        @RequestParam int id_inversionista,
-	        @RequestParam Date fecha_factura,
-	        @RequestParam double total,
-	        @RequestParam String estado) {
+	public ResponseEntity<Integer> createFactura(@RequestParam int id_inversionista, @RequestParam Date fecha_factura,
+			@RequestParam double total, @RequestParam String estado) {
 
-	    Factura fact = new Factura();
-	    fact.setEstado(estado);
-	    fact.setFecha_factura(fecha_factura);
-	    fact.setId_inversionista(id_inversionista);
-	    fact.setTotal(total);
+		Factura fact = new Factura();
+		fact.setEstado(estado);
+		fact.setFecha_factura(fecha_factura);
+		fact.setIdinversionista(id_inversionista);
+		fact.setTotal(total);
 
-	    Factura nuevaFactura = service.createFactura(fact); // Asegúrate de que este método devuelva la factura con ID
+		Factura nuevaFactura = service.createFactura(fact); // Asegúrate de que este método devuelva la factura con ID
 
-	    return ResponseEntity.ok(nuevaFactura.getId_factura()); // Devuelve la factura creada con el ID
+		return ResponseEntity.ok(nuevaFactura.getId_factura()); // Devuelve la factura creada con el ID
 	}
 
 	@PutMapping("/{id}")
-	public Factura updateFactura(@PathVariable int id, @RequestBody Factura factura) {
-		return service.updateFactura(factura);
+	public ResponseEntity<Factura> updateFactura(@PathVariable int id, @RequestParam int id_inversionista,
+			@RequestParam Date fecha_factura, @RequestParam double total, @RequestParam String estado) {
+		Optional<Factura> optionalFact = service.getFacturabyid(id);
+		
+		if (optionalFact.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}		
+		
+		Factura factura = optionalFact.get();
+		factura.setEstado(estado);
+		factura.setFecha_factura(fecha_factura);
+		factura.setIdinversionista(id_inversionista);
+		factura.setTotal(total);
+		
+		Factura facturaactualizada = service.updateFactura(factura);
+		return ResponseEntity.ok(facturaactualizada);
+	}
+
+	@PutMapping("/cambiasEstado/{id}")
+	public ResponseEntity<Factura> updateFacturaEstado(@PathVariable int id, @RequestParam String estado) {
+		Optional<Factura> optionalFact = service.getFacturabyid(id);
+
+		if (optionalFact.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+
+		Factura factura = optionalFact.get();
+		factura.setEstado(estado);
+
+		Factura facturaactualizada = service.updateFactura(factura);
+		return ResponseEntity.ok(facturaactualizada);
 	}
 }

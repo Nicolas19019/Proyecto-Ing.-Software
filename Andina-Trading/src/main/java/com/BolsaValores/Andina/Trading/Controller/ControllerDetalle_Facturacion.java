@@ -33,7 +33,12 @@ public class ControllerDetalle_Facturacion {
 
 	@GetMapping("/{id}")
 	public Optional<Detalle_Facturacion> getDetalle_Facturacionyid(@PathVariable int id) {
-		return service.getDetalle_Facturacionyid(id);
+		return service.getDetalle_Facturacionbyid(id);
+	}
+	
+	@GetMapping("/lista/{idfactura}")
+	public List<Detalle_Facturacion> getDetalle_FacturacionByidfactura(@PathVariable int idfactura) {
+		return service.getDetalle_FacturacionByidfactura(idfactura);
 	}
 
 	@PostMapping("/agregar")
@@ -42,7 +47,7 @@ public class ControllerDetalle_Facturacion {
 
 		Detalle_Facturacion deta_facturas = new Detalle_Facturacion();
 		deta_facturas.setCantidad(cantidad);
-		deta_facturas.setId_factura(id_factura);
+		deta_facturas.setIdfactura(id_factura);
 		deta_facturas.setNombre_accion(nombre_accion);
 		deta_facturas.setValor(valor);
 		return service.createDetalle_Facturacion(deta_facturas);

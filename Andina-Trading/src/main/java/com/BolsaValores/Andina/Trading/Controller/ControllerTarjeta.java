@@ -76,13 +76,13 @@ public class ControllerTarjeta {
 	@PutMapping("/{idInversionista}")
 	public ResponseEntity<Tarjeta> actualizarPais(@RequestParam int idInversionista , @RequestParam String numero_tarjeta,
 			@RequestParam String nombre_titular, @RequestParam String fecha_vencimiento, @RequestParam int cvvs) {
-		Optional<Tarjeta> optionalInver = service.getTarjetabyidinversionista(idInversionista);
+		Optional<Tarjeta> optionalTar = service.getTarjetabyidinversionista(idInversionista);
 
-		if (optionalInver.isEmpty()) {
+		if (optionalTar.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}
 
-		Tarjeta tarjeta = optionalInver.get();
+		Tarjeta tarjeta = optionalTar.get();
 		tarjeta.setCvv(cvvs);
 		tarjeta.setFecha_vencimiento(fecha_vencimiento);
 		tarjeta.setIdInversionista(idInversionista);
