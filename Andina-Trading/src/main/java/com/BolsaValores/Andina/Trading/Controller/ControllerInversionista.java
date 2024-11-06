@@ -60,7 +60,7 @@ public class ControllerInversionista {
 	}
 
 	@PutMapping("/AgregarBilletera/{usuario}")
-	public ResponseEntity<Inversionista> actualizarMonto(@PathVariable String usuario, @RequestParam int monto) {
+	public ResponseEntity<Inversionista> actualizarMonto(@PathVariable String usuario, @RequestParam double monto) {
 		Optional<Inversionista> optionalInver = service.findByUsuario(usuario);
 
 		if (optionalInver.isEmpty()) {

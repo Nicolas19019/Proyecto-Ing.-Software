@@ -26,7 +26,7 @@ public class Inversionista {
 	private int acciones;
 	
 	@Column(name = "Monto")
-	private int monto;
+	private double monto;
 
 	@Column(name = "Contraseña")
 	private String contrasena;
@@ -111,14 +111,14 @@ public class Inversionista {
 	/**
 	 * @return the monto
 	 */
-	public int getMonto() {
+	public double getMonto() {
 		return monto;
 	}
 
 	/**
 	 * @param monto the monto to set
 	 */
-	public void setMonto(int monto) {
+	public void setMonto(double monto) {
 		this.monto = monto;
 	}
 
