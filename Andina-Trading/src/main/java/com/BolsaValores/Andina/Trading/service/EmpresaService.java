@@ -23,6 +23,10 @@ public class EmpresaService {
 		return repo.findById(id);
 	}
 	
+	public Optional<Empresa> getEmpresabynombre(String nombre){
+		return repo.findByNombre(nombre);
+	}
+	
 	public Empresa createEmpresa(Empresa empresa) {
 		return repo.save(empresa);
 	}
@@ -33,5 +37,9 @@ public class EmpresaService {
 	
 	public void deleteEmpresa(int id) {
 		repo.deleteById(id);
+	}
+	
+	public boolean existeEmpresa(String empresa) {
+		return repo.existsByNombre(empresa);
 	}
 }

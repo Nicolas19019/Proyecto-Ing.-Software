@@ -1,9 +1,11 @@
 package com.BolsaValores.Andina.Trading.Controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +38,18 @@ public class ControllerEmpresa {
 	public Optional<Empresa> getEmpresabyid(@PathVariable int id) {
 		return service.getEmpresabyid(id);
 	}
+	
+	@GetMapping("/buscar/{nombre}")
+	public Optional<Empresa> getEmpresabynombre(@PathVariable String nombre) {
+		return service.getEmpresabynombre(nombre);
+	}
+	
+	@GetMapping("/existe")
+	public ResponseEntity<?> verificarEmpresa(@RequestParam String nombre){
+		boolean existeEmpresa = service.existeEmpresa(nombre);
+		
+		return ResponseEntity.ok().body(Map.of("La empresa existe", existeEmpresa));
+	}
 
 	@PostMapping("/agregar")
 	public Empresa createEmpresa(@RequestParam double valorAccion, @RequestParam String nombre) {
@@ -52,7 +66,7 @@ public class ControllerEmpresa {
 	}
 	
 	@PutMapping("/{id}")
-	public Empresa updateCliente(@PathVariable int id, @RequestBody Empresa empresaDetails) {
+	public Empresa updateEmpresa(@PathVariable int id, @RequestBody Empresa empresaDetails) {
 		return service.updateEmpresa(empresaDetails);
 	}
 

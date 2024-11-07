@@ -20,7 +20,11 @@ public class Inver_Empresa {
 	private int idInversionista;
 	
 	@Column(name = "Porcentaje")
-	private int porcentaje;
+	private double porcentaje;
+
+	
+	
+
 
 	/**
 	 * @return the idAcciones
@@ -67,14 +71,14 @@ public class Inver_Empresa {
 	/**
 	 * @return the porcentaje
 	 */
-	public int getPorcentaje() {
+	public double getPorcentaje() {
 		return porcentaje;
 	}
 
 	/**
 	 * @param porcentaje the porcentaje to set
 	 */
-	public void setPorcentaje(int porcentaje) {
+	public void setPorcentaje(double porcentaje) {
 		this.porcentaje = porcentaje;
 	}
 	

@@ -15,11 +15,11 @@ public class Inver_EmpresaService {
 	@Autowired
 	private RepositoryInver_Empresa repo;
 	
-	public List<Inver_Empresa> getalEmpresas(){
+	public List<Inver_Empresa> getallInversion(){
 		return repo.findAll();
 	}
 	
-	public Optional<Inver_Empresa> getEmpresabyid(int id){
+	public Optional<Inver_Empresa> getInversionbyid(int id){
 		return repo.findById(id);
 	}
 	
@@ -33,5 +33,9 @@ public class Inver_EmpresaService {
 	
 	public void deleteInversion(int id) {
 		repo.deleteById(id);
+	}
+	
+	public boolean existeInversion(int idEmpresa) {
+		return repo.existsByIdEmpresa(idEmpresa);
 	}
 }
