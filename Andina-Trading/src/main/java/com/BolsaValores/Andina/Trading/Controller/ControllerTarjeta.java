@@ -72,6 +72,11 @@ public class ControllerTarjeta {
 		service.deleteTarjeta(id);
 	}
 
+	@DeleteMapping("/eliminar/{id}")
+	public void deleteTarjetaByidinversionista(int idInversionista) {
+		service.deleteTarjetaByidInversionista(idInversionista);
+	}
+	
 	
 	@PutMapping("/{idInversionista}")
 	public ResponseEntity<Tarjeta> actualizarPais(@RequestParam int idInversionista , @RequestParam String numero_tarjeta,

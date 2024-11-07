@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.BolsaValores.Andina.Trading.Repository.RepositoryTarjeta;
 import com.BolsaValores.Andina.Trading.model.Tarjeta;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class TarjetaService {
 
@@ -23,9 +25,9 @@ public class TarjetaService {
 		return repo.findById(id);
 	}
 	
-	public Optional<Tarjeta> getTarjetabyidinversionista(int id_inversionista){
+	public Optional<Tarjeta> getTarjetabyidinversionista(int idInversionista){
 		
-		return repo.findByIdInversionista(id_inversionista);
+		return repo.findByidInversionista(idInversionista);
 	}
 
 	public Tarjeta createTarjeta(Tarjeta tarjeta) {
@@ -38,6 +40,11 @@ public class TarjetaService {
 
 	public void deleteTarjeta(int id) {
 		repo.deleteById(id);
+	}
+	
+	@Transactional
+	public void deleteTarjetaByidInversionista(int idInversionista) {
+		repo.deleteByidInversionista(idInversionista);
 	}
 
 	public boolean tieneTarjeta(int idInversionista) {
