@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.BolsaValores.Andina.Trading.model.Empresa;
+import com.BolsaValores.Andina.Trading.model.Tarjeta;
 import com.BolsaValores.Andina.Trading.service.EmpresaService;
 
 
@@ -60,14 +61,26 @@ public class ControllerEmpresa {
 		return service.createEmpresa(empresa);
 	}
 	
-	@DeleteMapping("/{id}")
-	public void deleteEmpresa(int id) {
-		service.deleteEmpresa(id);
+	@DeleteMapping("/{idEmpresa}")
+	public void deleteEmpresa(int idEmpresa) {
+		service.deleteEmpresa(idEmpresa);
 	}
 	
-	@PutMapping("/{id}")
-	public Empresa updateEmpresa(@PathVariable int id, @RequestBody Empresa empresaDetails) {
-		return service.updateEmpresa(empresaDetails);
+	
+	@PutMapping("/{idEmpresa}")
+	public ResponseEntity<Empresa> actualizarEmpresa(@RequestParam int idEmpresa , @RequestParam double valorAccion, @RequestParam String nombre) {
+		Optional<Empresa> optionalEmp = service.getEmpresabyid(idEmpresa);
+
+		if (optionalEmp.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+
+		Empresa empresa = optionalEmp.get();
+		empresa.setValorAccion(valorAccion);
+		empresa.setNombre(nombre);
+
+		Empresa empresaactualizada = service.updateEmpresa(empresa);
+		return ResponseEntity.ok(empresaactualizada);
 	}
 
 }

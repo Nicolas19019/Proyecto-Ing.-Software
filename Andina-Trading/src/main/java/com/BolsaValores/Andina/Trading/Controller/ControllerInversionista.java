@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.BolsaValores.Andina.Trading.model.Comisionista;
 import com.BolsaValores.Andina.Trading.model.Inversionista;
 import com.BolsaValores.Andina.Trading.service.InversionistaService;
 
@@ -134,14 +135,34 @@ public class ControllerInversionista {
 		return ResponseEntity.ok(updatedInver);
 	}
 
-	@PutMapping("/{id}")
-	public Inversionista updateInversionista(@RequestBody Inversionista inver) {
-		return service.createInversionista(inver);
+	@PutMapping("/{idinversionista}")
+	public ResponseEntity<Inversionista> updateInversionista( 
+			@RequestParam int idinversionista,
+			@RequestParam int cedula, @RequestParam String nombre,
+			@RequestParam String correo, @RequestParam String contrasena, @RequestParam String usuario,
+			@RequestParam String pais) {
+		
+		Optional<Inversionista> optionalinver = service.getinversionistabyid(idinversionista);
+
+		if (optionalinver.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+
+		Inversionista inver = optionalinver.get();
+		inver.setCedula(cedula);
+		inver.setNombre(nombre);
+		inver.setCorreo(correo);
+		inver.setContrasena(contrasena);
+		inver.setUsuario(usuario);
+		inver.setPais(pais);
+
+		Inversionista inveractualizada = service.updateInversionista(inver);
+		return ResponseEntity.ok(inveractualizada);
 	}
 
-	@DeleteMapping("/{id}")
-	public void deleteinversionista(int id) {
-		service.deleteinversionista(id);
+	@DeleteMapping("/{idinversionista}")
+	public void deleteinversionista(int idinversionista) {
+		service.deleteinversionista(idinversionista);
 	}
 	
 	 @DeleteMapping("/Borrarcuenta/{usuario}")

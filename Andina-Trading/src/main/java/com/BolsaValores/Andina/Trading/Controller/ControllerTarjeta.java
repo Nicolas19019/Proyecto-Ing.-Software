@@ -79,7 +79,7 @@ public class ControllerTarjeta {
 	
 	
 	@PutMapping("/{idInversionista}")
-	public ResponseEntity<Tarjeta> actualizarPais(@RequestParam int idInversionista , @RequestParam String numero_tarjeta,
+	public ResponseEntity<Tarjeta> actualizarTarjeta(@RequestParam int idInversionista , @RequestParam String numero_tarjeta,
 			@RequestParam String nombre_titular, @RequestParam String fecha_vencimiento, @RequestParam int cvvs) {
 		Optional<Tarjeta> optionalTar = service.getTarjetabyidinversionista(idInversionista);
 
