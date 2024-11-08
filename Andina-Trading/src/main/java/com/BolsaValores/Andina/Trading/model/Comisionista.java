@@ -23,7 +23,7 @@ public class Comisionista {
 	private String nombre;
 	
 	@Column(name = "comision")
-	private int comision;
+	private double comision;
 	
 	@Column(name = "Contraseña")
 	private String contra;
@@ -93,14 +93,14 @@ public class Comisionista {
 	/**
 	 * @return the comision
 	 */
-	public int getComision() {
+	public double getComision() {
 		return comision;
 	}
 
 	/**
 	 * @param comision the comision to set
 	 */
-	public void setComision(int comision) {
+	public void setComision(double comision) {
 		this.comision = comision;
 	}
 

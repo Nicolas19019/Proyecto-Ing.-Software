@@ -113,6 +113,22 @@ public class ControllerComisionista {
 		Comisionista updatedInver = service.updateComisionista(comisionista);
 		return ResponseEntity.ok(updatedInver);
 	}
+	
+	@PutMapping("/cambiarComision/{user}")
+	public ResponseEntity<Comisionista> actualizarComision(@PathVariable String user, @RequestParam double comision) {
+		Optional<Comisionista> optionalInver = service.findByUser(user);
+
+		if (optionalInver.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+
+		Comisionista comisionista = optionalInver.get();
+		comisionista.setComision(comision);
+
+		Comisionista updatedInver = service.updateComisionista(comisionista);
+		return ResponseEntity.ok(updatedInver);
+	}
+
 
 	@PutMapping("/cambiarcorreo/{user}")
 	public ResponseEntity<Comisionista> actualizarCorreo(@PathVariable String user, @RequestParam String correo) {
